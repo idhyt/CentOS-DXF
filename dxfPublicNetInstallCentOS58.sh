@@ -3,8 +3,11 @@
 #  installDOFCentOS.sh
 #  
 #
-#  Created by idhyt.
+#  Created by idhyt. 
+#  For testing only, do not use for illegal purpose!!! 
 #
+#
+
 default_ip="192.168.200.213"
 cur_ip="0.0.0.0"
 cur_dir=`pwd`
