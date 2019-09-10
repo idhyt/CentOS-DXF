@@ -44,7 +44,7 @@ function installSupportLibOnCentOS5() {
     yum -y update
     yum -y upgrade
     yum -y install mysql-server
-    yum -y install curl wget gcc gcc-c++ make zlib-devel libc.so.6 libstdc++ glibc.i686
+    yum -y install gcc gcc-c++ make zlib-devel libc.so.6 libstdc++ glibc.i686
 
     chkconfig mysqld on
     service mysqld start
@@ -154,11 +154,11 @@ function downloadDXF() {
 
 function install() {
 
-    installSupportLibOnCentOS5
+    downloadDXF
 
     getIP
 
-    downloadDXF
+    installSupportLibOnCentOS5
 
     addSwap
 
@@ -169,9 +169,22 @@ function install() {
     removeTemp
 }
 
-echo -e "\033[31m For testing only, do not use for illegal purpose!!! \033[0m"
+echo -e -n "\033[31m 仅供测试, 请勿用于非法用途!!! 是否同意 y/n [n] ?\033[0m"
+read ans
+case $ans in
+n|N|no|No)
+exit
+;;
+y|Y|yes|Yes)
+;;
+*)
+exit
+;;
+esac
 
 echo -e "\033[33m Install only test for CentOS5.8(rpm -qi centos-release: centos-release-5-8.el5.centos.src.rpm) \033[0m"
+echo -e "\033[33m Make sure 'wget' 'curl' already installed! \033[0m"
+sleep 2
 
 install
 
