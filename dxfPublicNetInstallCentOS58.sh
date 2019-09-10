@@ -44,7 +44,7 @@ function installSupportLibOnCentOS5() {
     yum -y update
     yum -y upgrade
     yum -y install mysql-server
-    yum -y install gcc gcc-c++ make zlib-devel libc.so.6 libstdc++ glibc.i686
+    yum -y install curl wget gcc gcc-c++ make zlib-devel libc.so.6 libstdc++ glibc.i686
 
     chkconfig mysqld on
     service mysqld start
@@ -153,13 +153,12 @@ function downloadDXF() {
 
 
 function install() {
-    echo "Install only test for CentOS5.8(rpm -qi centos-release: centos-release-5-8.el5.centos.src.rpm)"
+
+    installSupportLibOnCentOS5
 
     getIP
 
     downloadDXF
-
-    installSupportLibOnCentOS5
 
     addSwap
 
@@ -170,10 +169,12 @@ function install() {
     removeTemp
 }
 
+echo -e "\033[31m For testing only, do not use for illegal purpose!!! \033[0m"
+
+echo -e "\033[33m Install only test for CentOS5.8(rpm -qi centos-release: centos-release-5-8.el5.centos.src.rpm) \033[0m"
+
 install
 
-echo "IP = ${cur_ip}, install success..."
-echo "重启的话需要使用命令 service iptables stop 重新关闭防火墙"
-echo "PVF和publickey.pem请自行上传"
-echo "\n"
-
+echo -e "\033[33m IP = ${cur_ip}, install success... \033[0m"
+echo -e "\033[33m PVF和publickey.pem请自行上传 \033[0m"
+echo -e "\033[33m 重启的话需要使用命令 service iptables stop 重新关闭防火墙 \033[0m"
