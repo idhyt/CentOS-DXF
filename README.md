@@ -2,6 +2,8 @@
 
 **For testing only, do not use for illegal purpose!!!**
 
+Make sure 'wget' 'curl' already installed!
+
 ```
 cd ~
 
