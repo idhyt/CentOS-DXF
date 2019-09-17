@@ -85,6 +85,7 @@ function removeTemp() {
     case $ANS in
     y|Y|yes|Yes)
     rm -rf $cur_dir/dxf_server.tar.gz
+    rm -rf $cur_dir/mysql.tar.gz
     ;;
     n|N|no|No)
     ;;
@@ -96,19 +97,18 @@ function removeTemp() {
 function installDOF() {
     echo "解压安装包..."
     tar -xzvf dxf_server.tar.gz
-    cd ./dxf_server
+    tar -xzvf mysql.tar.gz
 
     echo "同步/home环境..."
-    rsync -avz --progress ./home /
+    rsync -avz --progress ./dxf_server/home /
 
     echo "同步/lib环境..."
-    cp -rf ./lib/libGeoIP.so.1 /lib
+    cp -rf ./dxf_server/lib/libGeoIP.so.1 /lib
     chmod 755 /lib/libGeoIP.so.1
-    cp -rf ./lib/libnxencryption.so /lib
+    cp -rf ./dxf_server/lib/libnxencryption.so /lib
     chmod 755 /lib/libnxencryption.so
 
     echo "同步数据库..."
-    tar -xzvf mysql.tar.gz
     chown -R mysql:mysql mysql
     rsync -avz --progress ./mysql /var/lib
     service mysqld restart
@@ -148,7 +148,10 @@ function installDOF() {
 
 function downloadDXF() {
     echo "下载安装包..."
-    wget -O ./dxf_server.tar.gz https://github.com/idhyt/CentOS-DXF/blob/master/dxf/dxf_server.tar.gz?raw=true
+    wget -O ./dxf_server.tar.gz http://pxlyjtrp1.bkt.clouddn.com/dxf_server.tar.gz
+
+    echo "下载数据库..."
+    wget -O ./mysql.tar.gz http://pxlyjtrp1.bkt.clouddn.com/mysql.tar.gz
 }
 
 
