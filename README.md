@@ -17,6 +17,20 @@ bash <(wget --timeout=10 https://raw.githubusercontent.com/idhyt/CentOS-DXF/mast
 
 upload you `pvf` and `publickey.pem`, run `/home/run`
 
+```
+...
+GeoIP Allow Country Code : CN
+GeoIP Allow Country Code : HK
+GeoIP Allow Country Code : KR
+GeoIP Allow Country Code : MO
+GeoIP Allow Country Code : TW
+[!] Connect To Monitor Server ...
+[!] Connect To Guild Server ...
+[!] Connect To Monitor Server ...
+[!] Connect To Guild Server ...
+
+```
+
 
 ### Issue
 
