@@ -15,9 +15,9 @@ cd ~
 bash <(wget --timeout=10 https://raw.githubusercontent.com/idhyt/CentOS-DXF/master/dxfPublicNetInstallCentOS58.sh -q -O - )
 ```
 
-upload you `pvf` and `publickey.pem`, exec `/home/run`
+upload you `pvf` and `publickey.pem`, run `/home/run`
 
 
 ### Issue
 
-If have any problems, please PR logs.
+If have any problems, please create [issue](https://github.com/idhyt/CentOS-DXF/issues) with your install logs.
