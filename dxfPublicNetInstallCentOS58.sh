@@ -155,7 +155,31 @@ function downloadDXF() {
 }
 
 
+function exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+
+function checkCmd() {
+    if exists curl; then
+        echo 'curl exists!'
+    else
+        echo 'Your system does not have curl, abort!'
+        exit
+    fi
+
+    if exists wget; then
+        echo 'wget exists!'
+    else
+        echo 'Your system does not have wget, abort!'
+        exit
+    fi
+
+}
+
+
 function install() {
+    checkCmd
 
     downloadDXF
 
