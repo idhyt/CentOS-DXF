@@ -15,10 +15,10 @@ cur_dir=`pwd`
 function getIP() {
     echo "获取IP..."
     # cur_ip=`curl -s --connect-timeout 3 http://members.3322.org/dyndns/getip`
-        cur_ip=`wget http://members.3322.org/dyndns/getip -q -O -`
+        cur_ip=`wget --timeout=3 http://members.3322.org/dyndns/getip -q -O -`
     if [ -z $cur_ip ]; then
     # cur_ip=`curl -s --connect-timeout 3 http://ifconfig.me`
-        cur_ip=`wget http://ifconfig.me -q -O -`
+        cur_ip=`wget --timeout=3 http://ifconfig.me -q -O -`
     fi
 
     echo -n "$cur_ip 是否是你的外网IP？(如果不是你的外网IP或者出现两条IP地址，请回 n 自行输入) y/n [n] ?"
