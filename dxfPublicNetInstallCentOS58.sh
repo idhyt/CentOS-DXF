@@ -14,9 +14,11 @@ cur_dir=`pwd`
 
 function getIP() {
     echo "获取IP..."
-    cur_ip=`curl -s --connect-timeout 3 http://members.3322.org/dyndns/getip`
+    # cur_ip=`curl -s --connect-timeout 3 http://members.3322.org/dyndns/getip`
+        cur_ip=`wget http://members.3322.org/dyndns/getip -q -O -`
     if [ -z $cur_ip ]; then
-    cur_ip=`curl -s --connect-timeout 3 http://ifconfig.me`
+    # cur_ip=`curl -s --connect-timeout 3 http://ifconfig.me`
+        cur_ip=`wget http://ifconfig.me -q -O -`
     fi
 
     echo -n "$cur_ip 是否是你的外网IP？(如果不是你的外网IP或者出现两条IP地址，请回 n 自行输入) y/n [n] ?"
@@ -26,7 +28,7 @@ function getIP() {
     ;;
     n|N|no|No)
     read -p "输入你的外网IP地址，回车（确保是英文字符的点号）：" myip
-    $cur_ip=$myip
+    cur_ip=$myip
     ;;
     *)
     ;;
@@ -161,12 +163,12 @@ function exists() {
 
 
 function checkCmd() {
-    if exists curl; then
-        echo 'curl exists!'
-    else
-        echo 'Your system does not have curl, abort!'
-        exit
-    fi
+    # if exists curl; then
+    #     echo 'curl exists!'
+    # else
+    #     echo 'Your system does not have curl, abort!'
+    #     exit
+    # fi
 
     if exists wget; then
         echo 'wget exists!'
@@ -210,7 +212,7 @@ exit
 esac
 
 echo -e "\033[33m Install only test for CentOS5.8(rpm -qi centos-release: centos-release-5-8.el5.centos.src.rpm) \033[0m"
-echo -e "\033[33m Make sure 'wget' 'curl' already installed! \033[0m"
+echo -e "\033[33m Make sure 'wget' already installed! \033[0m"
 sleep 2
 
 install
