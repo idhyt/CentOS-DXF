@@ -150,10 +150,12 @@ function installDOF() {
 
 function downloadDXF() {
     echo "下载安装包..."
-    wget -O ./dxf_server.tar.gz http://pxlyjtrp1.bkt.clouddn.com/dxf_server.tar.gz
+    # wget -O ./dxf_server.tar.gz http://pxlyjtrp1.bkt.clouddn.com/dxf_server.tar.gz
+    wget -O ./dxf_server.tar.gz https://coding.net/u/idhyt/p/RawRepo/git/raw/master/dxf/dxf_server.tar.gz
 
     echo "下载数据库..."
-    wget -O ./mysql.tar.gz http://pxlyjtrp1.bkt.clouddn.com/mysql.tar.gz
+    # wget -O ./mysql.tar.gz http://pxlyjtrp1.bkt.clouddn.com/mysql.tar.gz
+    wget -O ./mysql.tar.gz https://coding.net/u/idhyt/p/RawRepo/git/raw/master/dxf/mysql.tar.gz
 }
 
 
