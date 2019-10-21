@@ -35,3 +35,14 @@ GeoIP Allow Country Code : TW
 ### Issue
 
 If have any problems, please create [issue](https://github.com/idhyt/CentOS-DXF/issues) with your install logs.
+
+#### Degrade CentOS5.8x64
+
+```
+yum install -y xz openssl gawk coreutils file
+wget https://db.ci/os/CentOSNET.sh && chmod a+x CentOSNET.sh
+bash CentOSNET.sh -c 5.8 -v 64 -a --mirror 'http://archive.kernel.org/centos-vault'
+```
+Your can see the installation progress by VNC (ip:5901)
+
+After install, default user/password: root/Vicer
